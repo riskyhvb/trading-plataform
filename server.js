@@ -21,9 +21,10 @@ app.use(express.json());
 app.use(cookieParser()); // Para trabajar con cookies
 
 // Conexión a MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Conectado a MongoDB'))
   .catch(err => console.error('Error al conectar con MongoDB', err));
+
 
 // Limitar las solicitudes a 5 intentos por minuto para las rutas de login y registro
 const limiter = rateLimit({

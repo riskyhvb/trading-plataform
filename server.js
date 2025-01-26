@@ -145,10 +145,7 @@ app.get('/api/user/profile', authenticateToken, (req, res) => {
 
 // Puerto donde se ejecutará el servidor
 const server = process.env.NODE_ENV === 'production'
-  ? https.createServer({
-      key: fs.readFileSync('path_to_your_private_key'), // Aquí debes poner la ruta a tu clave privada
-      cert: fs.readFileSync('path_to_your_certificate')  // Aquí debes poner la ruta a tu certificado
-    }, app)
+  ? app // No usar HTTPS en desarrollo ni en este caso
   : app;
 
 server.listen(process.env.PORT || 4000, () => {
